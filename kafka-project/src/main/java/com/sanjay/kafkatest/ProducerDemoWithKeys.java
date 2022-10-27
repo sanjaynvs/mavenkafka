@@ -24,7 +24,7 @@ public class ProducerDemoWithKeys {
 
         for(int i=0;i<10;i++) {
 
-            String topic = "first topic";
+            String topic = "first_topic";
             String value = "hello world "+ Integer.toString(i);
             String key = "id_"+Integer.toString(i);
 
