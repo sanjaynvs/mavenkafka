@@ -83,6 +83,8 @@ public class ConsumerDemoWithThread {
                               String topic,
                               CountDownLatch latch){
 
+            System.out.println("..............."+bootstrapServer);
+
             this.latch = latch;
             Properties properties = new Properties();
             properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
@@ -93,7 +95,8 @@ public class ConsumerDemoWithThread {
 
 
             //create consumer
-            KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
+//            KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
+            consumer = new KafkaConsumer<String, String>(properties);
 
             //subscribe to consumer to our topics
             consumer.subscribe(Arrays.asList(topic));
