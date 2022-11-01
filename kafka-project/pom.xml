@@ -3,8 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>kafkaproj</groupId>
     <artifactId>kafka-project</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>kafka-consumer-elasticsearch</module>
+    </modules>
     <name>kafka-project</name>
     <url>http://maven.apache.org</url>
 
@@ -26,6 +29,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>hbc-core</artifactId> <!-- or hbc-twitter4j -->
+            <version>2.2.0</version> <!-- or whatever the latest version is -->
         </dependency>
     </dependencies>
     <build>
