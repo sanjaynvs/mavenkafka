@@ -109,7 +109,7 @@ public class ElasticSearchConsumer {
                 }
 
             }
-            client.close();
+            //client.close();
         }
 
     }
