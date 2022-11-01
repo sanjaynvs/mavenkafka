@@ -19,11 +19,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URI;
 
 public class ElasticSearchConsumer {
 
     public static RestHighLevelClient createClient(){
         String hostname = "kafka-course-1-2974987369.us-west-2.bonsaisearch.net:443";
+        //String hostname = "kafka-course-1-2974987369.us-west-2.bonsaisearch.net";
+        String bonsaiURI = "https://iu6pxi3peo:6z7tb7ni1l@kafka-course-1-2974987369.us-west-2.bonsaisearch.net:443";
         String username = "iu6pxi3peo";
         String password = "6z7tb7ni1l";
 
@@ -31,8 +34,14 @@ public class ElasticSearchConsumer {
         credentialsProvider.setCredentials(AuthScope.ANY,
                 new UsernamePasswordCredentials(username,password));
 
+        System.out.println(hostname);
+
+        URI connUri = URI.create(bonsaiURI);
+        System.out.println(connUri.getHost());
+
         RestClientBuilder builder = RestClient.builder(
-          new HttpHost(hostname, 443,"https"))
+          //new HttpHost(hostname, 443,"https"))
+                new HttpHost(connUri.getHost(), connUri.getPort(),connUri.getScheme()))
           .setHttpClientConfigCallback(new RestClientBuilder.HttpClientConfigCallback() {
               public HttpAsyncClientBuilder customizeHttpClient(HttpAsyncClientBuilder httpAsyncClientBuilder) {
                   return httpAsyncClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
