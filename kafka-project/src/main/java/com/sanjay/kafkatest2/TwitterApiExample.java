@@ -29,7 +29,7 @@ public class TwitterApiExample {
 
         try {
             // findTweetById
-            Get2TweetsIdResponse result = apiInstance.tweets().findTweetById("20")
+            Get2TweetsIdResponse result = apiInstance.tweets().findTweetById("1587422288714272768")
                     .tweetFields(tweetFields)
                     .execute();
             if(result.getErrors() != null && result.getErrors().size() > 0) {
