@@ -2,27 +2,28 @@ package com.sanjay.kafkatest2;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.twitter.clientlib.TwitterCredentialsOAuth2;
+import com.twitter.clientlib.ApiClient;
 import com.twitter.clientlib.ApiException;
+import com.twitter.clientlib.TwitterCredentialsBearer;
 import com.twitter.clientlib.api.TwitterApi;
-import com.twitter.clientlib.model.*;
+import com.twitter.clientlib.model.ResourceUnauthorizedProblem;
+import com.twitter.clientlib.model.Get2TweetsIdResponse;
 
-public class TwitterApiExample {
+/**
+ * Initializing the TwitterApi using a non default ApiClient.
+ */
+public class NonDefaultClient {
 
     public static void main(String[] args) {
+        NonDefaultClient example = new NonDefaultClient();
+        // Create an ApiClient and use it instead of the default one in TwitterApi
+        ApiClient apiClient = new ApiClient();
+        apiClient.setTwitterCredentials(new TwitterCredentialsBearer("AAAAAAAAAAAAAAAAAAAAANWyigEAAAAAldJQ4mO11WEsUPp178JtdFbcsdI%3DQoLMrV6qpTuslW2gfVN8KjLqiBKRFAyI5q1G62WD2XvdsuaV4H"));
+        TwitterApi apiInstance = new TwitterApi(apiClient);
+        example.callApi(apiInstance);
+    }
 
-        /**
-         * Set the credentials for the required APIs.
-         * The Java SDK supports TwitterCredentialsOAuth2 & TwitterCredentialsBearer.
-         * Check the 'security' tag of the required APIs in https://api.twitter.com/2/openapi.json in order
-         * to use the right credential object.
-         */
-        TwitterApi apiInstance = new TwitterApi(new TwitterCredentialsOAuth2(
-                "XCgwMJQ68BtTpgMoK8imy7D3x",
-                "jvE2yqBAXm2Owfw7690PyzLvNFJMeLeWGaecRstL7olBNXxe9c",
-                "102343857-PytIbKcqqIug717AKb4VpWwg5zxrzuTf3IaerlfV",
-                "0scOjHcD86hLvcoceX4sk2ZWYbCAv0a9MuP4aa8Rdklcu"));
-
+    public void callApi(TwitterApi apiInstance) {
         Set<String> tweetFields = new HashSet<>();
         tweetFields.add("author_id");
         tweetFields.add("id");
@@ -30,16 +31,15 @@ public class TwitterApiExample {
 
         try {
             // findTweetById
-            Get2TweetsIdResponse result = apiInstance.tweets().findTweetById("1587422288714272768")
+            Get2TweetsIdResponse result = apiInstance.tweets().findTweetById("759043035355312128")
                     .tweetFields(tweetFields)
                     .execute();
-            if(result.getErrors() != null && result.getErrors().size() > 0) {
+            if (result.getErrors() != null && result.getErrors().size() > 0) {
                 System.out.println("Error:");
-
                 result.getErrors().forEach(e -> {
                     System.out.println(e.toString());
                     if (e instanceof ResourceUnauthorizedProblem) {
-                        System.out.println(((ResourceUnauthorizedProblem) e).getTitle() + " " + ((ResourceUnauthorizedProblem) e).getDetail());
+                        System.out.println(e.getTitle() + " " + e.getDetail());
                     }
                 });
             } else {
@@ -50,7 +50,8 @@ public class TwitterApiExample {
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
-
