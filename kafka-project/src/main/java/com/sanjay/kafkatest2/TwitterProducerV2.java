@@ -75,10 +75,10 @@ public class TwitterProducerV2 {
          * to use the right credential object.
          */
         TwitterApi apiInstance = new TwitterApi(new TwitterCredentialsOAuth2(
-                System.getenv("XCgwMJQ68BtTpgMoK8imy7D3x"),
-                System.getenv("jvE2yqBAXm2Owfw7690PyzLvNFJMeLeWGaecRstL7olBNXxe9c"),
-                System.getenv("102343857-PytIbKcqqIug717AKb4VpWwg5zxrzuTf3IaerlfV"),
-                System.getenv("0scOjHcD86hLvcoceX4sk2ZWYbCAv0a9MuP4aa8Rdklcu")));
+               "XCgwMJQ68BtTpgMoK8imy7D3x",
+                "jvE2yqBAXm2Owfw7690PyzLvNFJMeLeWGaecRstL7olBNXxe9c",
+                "102343857-PytIbKcqqIug717AKb4VpWwg5zxrzuTf3IaerlfV",
+                "0scOjHcD86hLvcoceX4sk2ZWYbCAv0a9MuP4aa8Rdklcu"));
 
         return apiInstance;
 
