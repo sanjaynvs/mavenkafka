@@ -11,6 +11,8 @@ import com.github.redouane59.twitter.signature.TwitterCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 
 public class TwitteredClient {
 
@@ -55,7 +57,17 @@ public class TwitteredClient {
 ////        twitterClient.addFilteredStreamRule("#cricket","")
 //        StreamRules.StreamRule streamRule = twitterClient.addFilteredStreamRule("#cricket", "india");
         //twitterClient.startFilteredStream()
-//        twitterClient.
+        List<StreamRules.StreamRule> lsr = twitterClient.retrieveFilteredStreamRules();
+        for(StreamRules.StreamRule rule: lsr){
+            logger.info("in for loop");
+            logger.info("rule id " + rule.getId());
+            logger.info("rule tag " + rule.getTag());
+            logger.info("rule Value " + rule.getValue());
+            logger.info("rule toString " + rule.toString());
+
+        }
+
+
 
             twitterClient.startFilteredStream(new IAPIEventListener() {
                 @Override
