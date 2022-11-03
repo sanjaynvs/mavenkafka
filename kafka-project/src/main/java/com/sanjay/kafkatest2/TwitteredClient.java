@@ -67,6 +67,15 @@ public class TwitteredClient {
 
         }
 
+        StreamRules.StreamMeta sm = twitterClient.deleteFilteredStreamRule("#cricket");
+        logger.info("Post filter deletion, sm.getSummary().toString(): " + sm.getSummary().toString());
+
+        StreamRules.StreamRule streamRuleCricket = twitterClient.addFilteredStreamRule("#cricket", "india");
+        logger.info("Post filter addition (cricket), sm.getSummary().toString(): " + streamRuleCricket.toString());
+
+        StreamRules.StreamRule streamRuleFootBall = twitterClient.addFilteredStreamRule("#football", "germany");
+        logger.info("Post filter addition, sm.getSummary().toString(): " + streamRuleFootBall.toString());
+
 
 
             twitterClient.startFilteredStream(new IAPIEventListener() {
