@@ -60,10 +60,10 @@ public class TwitteredClient {
                 @Override
                 public void onStreamError(int i, String s) {
 
-                    logger.info("i...."+i);
+                    logger.error("i...."+i);
 //                    System.out.println("i...."+i);
 //                    System.out.println("s...."+s);
-                    logger.info("s...."+s);
+                    logger.error("s...."+s);
                 }
 
                 @Override
