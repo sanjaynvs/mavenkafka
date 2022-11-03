@@ -53,7 +53,7 @@ public class TwitteredClient {
 //        //twitterClient.startFilteredStream()
 //
 ////        twitterClient.addFilteredStreamRule("#cricket","")
-        StreamRules.StreamRule streamRule = twitterClient.addFilteredStreamRule("cricket", "india");
+        //StreamRules.StreamRule streamRule = twitterClient.addFilteredStreamRule("cricket", "india");
         //twitterClient.startFilteredStream()
 //        twitterClient.
 

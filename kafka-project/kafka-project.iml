@@ -55,6 +55,15 @@
     <orderEntry type="library" name="Maven: com.github.scribejava:scribejava-apis:8.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.scribejava:scribejava-core:8.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.scribejava:scribejava-java8:8.3.1" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/twittered-2.21.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="com.github.redouane59.twitter:twittered:1.26" level="project" />
   </component>
 </module>
