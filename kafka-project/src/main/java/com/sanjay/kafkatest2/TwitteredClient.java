@@ -8,10 +8,15 @@ import com.github.redouane59.twitter.dto.user.User;
 //import com.github.redouane59.twitter.helpers.TweetStreamConsumer;
 import com.github.redouane59.twitter.signature.TwitterCredentials;
 //import com.github.redouane59.twitter.IAPIEventListener;
+import com.github.scribejava.core.model.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 
 public class TwitteredClient {
@@ -77,9 +82,8 @@ public class TwitteredClient {
         StreamRules.StreamRule streamRuleFootBall = twitterClient.addFilteredStreamRule("#football", "germany");
         logger.info("Post filter addition, sm.getSummary().toString(): " + streamRuleFootBall.toString());
 
-
-
-            twitterClient.startFilteredStream(new IAPIEventListener() {
+        int counter = 0;
+            Future<Response> res = twitterClient.startFilteredStream(new IAPIEventListener() {
                 @Override
                 public void onStreamError(int i, String s) {
 
@@ -91,6 +95,7 @@ public class TwitteredClient {
 
                 @Override
                 public void onTweetStreamed(Tweet tweet) {
+                    //counter ++;
                     logger.info("[mention] from:@" + tweet.getUser().getName() + " : " + tweet.getText());
 
                 }
@@ -106,6 +111,20 @@ public class TwitteredClient {
 
                 }
             });
+
+        try {
+            res.get(30000, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            logger.info("in exception ..."+e);
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+
+
+//        twitterClient.stopFilteredStream();
 
 
 
