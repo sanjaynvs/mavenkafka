@@ -1,12 +1,13 @@
 package com.sanjay.kafkatest2;
 
+import com.github.redouane59.twitter.IAPIEventListener;
 import com.github.redouane59.twitter.TwitterClient;
 import com.github.redouane59.twitter.dto.stream.StreamRules;
 import com.github.redouane59.twitter.dto.tweet.Tweet;
 import com.github.redouane59.twitter.dto.user.User;
 //import com.github.redouane59.twitter.helpers.TweetStreamConsumer;
 import com.github.redouane59.twitter.signature.TwitterCredentials;
-import com.github.redouane59.twitter.IAPIEventListener;
+//import com.github.redouane59.twitter.IAPIEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
