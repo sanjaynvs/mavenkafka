@@ -17,8 +17,8 @@ public class TwitteredClient {
                 .apiSecretKey("jvE2yqBAXm2Owfw7690PyzLvNFJMeLeWGaecRstL7olBNXxe9c")
                 .build());
 
-        User user   = twitterClient.getUserFromUserId("sanny_pj");
-        System.out.println(user.getId());
+//        User user   = twitterClient.getUserFromUserId("sanny_pj");
+//        System.out.println(user.getId());
 //        System.out.println(user.getUser().getName());
 //        System.out.println(user.getUser().getDisplayedName());
 //        System.out.println(user.getUser().getDateOfCreation());
@@ -33,14 +33,14 @@ public class TwitteredClient {
 //        System.out.println(user.getUser().getUrl());
 
 
-//        Tweet tweet   = twitterClient.getTweet("1224041905333379073");
-//        System.out.println(tweet.getText());
-//        System.out.println(tweet.getCreatedAt());
-//        System.out.println(tweet.getLang());
-//        System.out.println(tweet.getLikeCount());
-//        System.out.println(tweet.getRetweetCount());
-//        System.out.println(tweet.getReplyCount());
-//        System.out.println(tweet.getUser().getName());
+        Tweet tweet   = twitterClient.getTweet("1224041905333379073");
+        System.out.println(tweet.getText());
+        System.out.println(tweet.getCreatedAt());
+        System.out.println(tweet.getLang());
+        System.out.println(tweet.getLikeCount());
+        System.out.println(tweet.getRetweetCount());
+        System.out.println(tweet.getReplyCount());
+        System.out.println(tweet.getUser().getName());
 
     }
 }
