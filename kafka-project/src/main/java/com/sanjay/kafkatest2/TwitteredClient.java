@@ -73,6 +73,7 @@ public class TwitteredClient {
         StreamRules.StreamRule streamRuleCricket = twitterClient.addFilteredStreamRule("#cricket", "india");
         logger.info("Post filter addition (cricket), sm.getSummary().toString(): " + streamRuleCricket.toString());
 
+
         StreamRules.StreamRule streamRuleFootBall = twitterClient.addFilteredStreamRule("#football", "germany");
         logger.info("Post filter addition, sm.getSummary().toString(): " + streamRuleFootBall.toString());
 
