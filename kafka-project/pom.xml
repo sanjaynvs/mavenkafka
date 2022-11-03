@@ -53,9 +53,10 @@
             <artifactId>twitter-api-java-sdk</artifactId>
             <version>2.0.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.redouane59.twitter/twittered-jdk8 -->
         <dependency>
-            <groupId>io.github.redouane59.twitter</groupId>
-            <artifactId>twittered</artifactId>
+            <groupId>com.github.redouane59.twitter</groupId>
+            <artifactId>twittered-jdk8</artifactId>
             <version>1.17</version>
         </dependency>
     </dependencies>
