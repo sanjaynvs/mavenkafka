@@ -79,8 +79,8 @@ public class TwitteredClient {
         logger.info("Post filter addition (cricket), sm.getSummary().toString(): " + streamRuleCricket.toString());
 
 
-        StreamRules.StreamRule streamRuleFootBall = twitterClient.addFilteredStreamRule("#football", "germany");
-        logger.info("Post filter addition, sm.getSummary().toString(): " + streamRuleFootBall.toString());
+//        StreamRules.StreamRule streamRuleFootBall = twitterClient.addFilteredStreamRule("#football", "germany");
+//        logger.info("Post filter addition, sm.getSummary().toString(): " + streamRuleFootBall.toString());
 
         int counter = 0;
             Future<Response> res = twitterClient.startFilteredStream(new IAPIEventListener() {
