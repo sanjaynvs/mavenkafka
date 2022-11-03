@@ -54,10 +54,11 @@
             <version>2.0.3</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.redouane59.twitter/twittered -->
+        <!-- https://mvnrepository.com/artifact/com.github.redouane59.twitter/twittered -->
         <dependency>
-            <groupId>io.github.redouane59.twitter</groupId>
+            <groupId>com.github.redouane59.twitter</groupId>
             <artifactId>twittered</artifactId>
-            <version>2.21</version>
+            <version>1.26</version>
         </dependency>
     </dependencies>
 </project>
