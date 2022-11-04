@@ -13,13 +13,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 
-public class TwitteredClient {
+public class TwitteredClient extends TimerTask {
 
     public static void main(String[] args) {
 
@@ -32,36 +33,6 @@ public class TwitteredClient {
                 .apiSecretKey("jvE2yqBAXm2Owfw7690PyzLvNFJMeLeWGaecRstL7olBNXxe9c")
                 .build());
 
-//        User user   = twitterClient.getUserFromUserId("sanny_pj");
-//        System.out.println(user.getId());
-//        System.out.println(user.getUser().getName());
-//        System.out.println(user.getUser().getDisplayedName());
-//        System.out.println(user.getUser().getDateOfCreation());
-//        System.out.println(user.getUser().getDescription());
-//        System.out.println(user.getUser().getTweetCount());
-//        System.out.println(user.getUser().getFollowersCount());
-//        System.out.println(user.getUser().getFollowingCount());
-//        System.out.println(user.getUser().getPinnedTweet());
-//        System.out.println(user.getUser().getPinnedTweet());
-//        System.out.println(user.getUser().getLocation());
-//        System.out.println(user.getUser().getId());
-//        System.out.println(user.getUser().getUrl());
-
-
-//        Tweet tweet   = twitterClient.getTweet("1224041905333379073");
-//        System.out.println(tweet.getText());
-//        System.out.println(tweet.getCreatedAt());
-//        System.out.println(tweet.getLang());
-//        System.out.println(tweet.getLikeCount());
-//        System.out.println(tweet.getRetweetCount());
-//        System.out.println(tweet.getReplyCount());
-//        System.out.println(tweet.getUser().getName());
-//
-//        //twitterClient.startFilteredStream()
-//
-////        twitterClient.addFilteredStreamRule("#cricket","")
-//        StreamRules.StreamRule streamRule = twitterClient.addFilteredStreamRule("#cricket", "india");
-        //twitterClient.startFilteredStream()
         List<StreamRules.StreamRule> lsr = twitterClient.retrieveFilteredStreamRules();
         for(StreamRules.StreamRule rule: lsr){
             logger.info("in for loop");
@@ -81,9 +52,7 @@ public class TwitteredClient {
 
 //        StreamRules.StreamRule streamRuleFootBall = twitterClient.addFilteredStreamRule("#football", "germany");
 //        logger.info("Post filter addition, sm.getSummary().toString(): " + streamRuleFootBall.toString());
-
-        int counter = 0;
-            Future<Response> res = twitterClient.startFilteredStream(new IAPIEventListener() {
+    Future<Response> res = twitterClient.startFilteredStream(new IAPIEventListener() {
                 @Override
                 public void onStreamError(int i, String s) {
 
@@ -112,19 +81,14 @@ public class TwitteredClient {
                 }
             });
 
-        try {
-            res.get(30000, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            logger.info("in exception ..."+e);
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
-
 
 //        twitterClient.stopFilteredStream();
+
+
+    }
+
+    @Override
+    public void run() {
 
 
 
