@@ -1,4 +1,4 @@
-package com.sanjay.kafkatest;
+package kafkatest;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

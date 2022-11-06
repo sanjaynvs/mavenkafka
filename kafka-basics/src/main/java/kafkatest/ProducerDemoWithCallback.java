@@ -1,4 +1,4 @@
-package com.sanjay.kafkatest;
+package kafkatest;
 
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
