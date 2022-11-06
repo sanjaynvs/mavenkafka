@@ -11,8 +11,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -29,7 +27,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class ElasticSearchConsumer {
+public class ElasticSearchConsumerTest {
 
     public static RestHighLevelClient createClient(){
         String hostname = "kafka-course-1-2974987369.us-west-2.bonsaisearch.net:443";
@@ -79,16 +77,16 @@ public class ElasticSearchConsumer {
     }
     public static void main(String[] args) throws IOException {
 
-        Logger logger = LoggerFactory.getLogger(ElasticSearchConsumer.class.getName());
+        Logger logger = LoggerFactory.getLogger(ElasticSearchConsumerTest.class.getName());
 
         RestHighLevelClient client = createClient();
 
-        KafkaConsumer<String,String> consumer = createConsumer("tweet_cricket_football");
+      //  KafkaConsumer<String,String> consumer = createConsumer("tweet_cricket_football");
         // poll for new data
-        while(true){
-            ConsumerRecords<String,String> records = consumer.poll(Duration.ofMillis(100));
+//        while(true){
+          //  ConsumerRecords<String,String> records = consumer.poll(Duration.ofMillis(100));
 
-            for(ConsumerRecord<String,String> record: records){
+            //for(ConsumerRecord<String,String> record: records){
 //                logger.info("Key: "+record.key()+", Value: "+record.value());
 //                logger.info("Partition: "+record.partition()+", Offset:" +record.offset());
                 // where we insert data in ElasticSearch
@@ -96,7 +94,7 @@ public class ElasticSearchConsumer {
                 IndexRequest indexRequest = new IndexRequest(
                         "twitter",
                         "tweets"
-                ).source(record.value(), XContentType.JSON);
+                ).source("test", XContentType.JSON);
 
 
                 IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
@@ -108,9 +106,9 @@ public class ElasticSearchConsumer {
                     e.printStackTrace();
                 }
 
-            }
+//            }
             //client.close();
-        }
+//        }
 
     }
 
