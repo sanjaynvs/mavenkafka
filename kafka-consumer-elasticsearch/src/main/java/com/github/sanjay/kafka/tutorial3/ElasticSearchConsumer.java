@@ -63,6 +63,7 @@ public class ElasticSearchConsumer {
     public static KafkaConsumer<String,String> createConsumer(String topic){
         String bootstrapServer = "127.0.0.1:9092";
         String groupId = "kafka-demo-elasticsearch";
+//        String topic = "tweet_cricket_football";
 
         Properties properties = new Properties();
         properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
@@ -89,8 +90,8 @@ public class ElasticSearchConsumer {
             ConsumerRecords<String,String> records = consumer.poll(Duration.ofMillis(100));
 
             for(ConsumerRecord<String,String> record: records){
-//                logger.info("Key: "+record.key()+", Value: "+record.value());
-//                logger.info("Partition: "+record.partition()+", Offset:" +record.offset());
+                logger.info("Key: "+record.key()+", Value: "+record.value());
+                logger.info("Partition: "+record.partition()+", Offset:" +record.offset());
                 // where we insert data in ElasticSearch
 
                 IndexRequest indexRequest = new IndexRequest(
@@ -109,8 +110,9 @@ public class ElasticSearchConsumer {
                 }
 
             }
-            //client.close();
+
         }
+//        client.close();
 
     }
 
