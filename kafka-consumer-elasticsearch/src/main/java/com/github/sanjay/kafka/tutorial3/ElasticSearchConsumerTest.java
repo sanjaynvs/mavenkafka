@@ -80,6 +80,7 @@ public class ElasticSearchConsumerTest {
         Logger logger = LoggerFactory.getLogger(ElasticSearchConsumerTest.class.getName());
 
         RestHighLevelClient client = createClient();
+        String jsonString = "{\"foo\":\"bar\"}";
 
       //  KafkaConsumer<String,String> consumer = createConsumer("tweet_cricket_football");
         // poll for new data
@@ -94,7 +95,7 @@ public class ElasticSearchConsumerTest {
                 IndexRequest indexRequest = new IndexRequest(
                         "twitter",
                         "tweets"
-                ).source("test", XContentType.JSON);
+                ).source(jsonString, XContentType.JSON);
 
 
                 IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
