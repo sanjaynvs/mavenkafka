@@ -100,7 +100,7 @@ public class ElasticSearchConsumerTest {
 
                 IndexResponse indexResponse = client.index(indexRequest, RequestOptions.DEFAULT);
                 String id = indexResponse.getId();
-                logger.info(id);
+//                logger.info(id);
                 client.close();
                 try {
                     Thread.sleep(1000);
