@@ -103,6 +103,8 @@ public class TwitterProducerTimed{
                 public void onTweetStreamed(Tweet tweet) {
 
                     String tweetString = "[mention] from:@" + tweet.getUser().getName() + " : " + tweet.getText();
+                    logger.info("tweet is...");
+                    logger.info(tweet);
                     logger.info("tweet id is...");
                     logger.info(tweet.getId());
                     logger.info(tweetString);
