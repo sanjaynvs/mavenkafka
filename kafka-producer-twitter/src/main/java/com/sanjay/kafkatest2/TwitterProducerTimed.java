@@ -102,14 +102,20 @@ public class TwitterProducerTimed{
                 @Override
                 public void onTweetStreamed(Tweet tweet) {
 
-                    String tweetString = "[mention] from:@" + tweet.getUser().getName() + " : " + tweet.getText();
+//                    String tweetString = "[mention] from:@" + tweet.getUser().getName() + " : " + tweet.getText();
 //                    logger.info("tweet is...");
 //                    logger.info(tweet.);
+                    String tweetJasonString = "{" +
+                            "\"id\":\""+tweet.getId()+"\""+
+                            "\"name\":\""+tweet.getUser().getName()+"\""+
+                            "\"tweet\":\""+tweet.getText()+"\""+
+                            "}";
+
                     logger.info("tweet id is...");
                     logger.info(tweet.getId());
-                    logger.info(tweetString);
+                    logger.info(tweetJasonString);
                     logger.info("Sending to Kafka Producer...");
-                    ProducerRecord<String, String> record = new ProducerRecord<String, String>("tweet_cricket_football",tweetString);
+                    ProducerRecord<String, String> record = new ProducerRecord<String, String>("tweet_cricket_football",tweetJasonString);
                     producer.send(record, new Callback() {
                         @Override
                         public void onCompletion(RecordMetadata recordMetadata, Exception e) {
