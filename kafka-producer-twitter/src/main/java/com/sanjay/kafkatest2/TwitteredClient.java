@@ -65,6 +65,7 @@ public class TwitteredClient extends TimerTask {
                 @Override
                 public void onTweetStreamed(Tweet tweet) {
                     //counter ++;
+
                     logger.info("[mention] from:@" + tweet.getUser().getName() + " : " + tweet.getText());
 
                 }

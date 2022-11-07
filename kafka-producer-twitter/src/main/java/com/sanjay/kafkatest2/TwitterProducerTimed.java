@@ -101,7 +101,10 @@ public class TwitterProducerTimed{
 
                 @Override
                 public void onTweetStreamed(Tweet tweet) {
+
                     String tweetString = "[mention] from:@" + tweet.getUser().getName() + " : " + tweet.getText();
+                    logger.info("tweet id is...");
+                    logger.info(tweet.getId());
                     logger.info(tweetString);
                     logger.info("Sending to Kafka Producer...");
                     ProducerRecord<String, String> record = new ProducerRecord<String, String>("tweet_cricket_football",tweetString);
