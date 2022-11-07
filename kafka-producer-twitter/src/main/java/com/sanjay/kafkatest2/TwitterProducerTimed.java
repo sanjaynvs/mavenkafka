@@ -106,8 +106,8 @@ public class TwitterProducerTimed{
 //                    logger.info("tweet is...");
 //                    logger.info(tweet.);
                     String tweetJasonString = "{" +
-                            "\"id\":\""+tweet.getId()+"\" "+
-                            "\"name\":\""+tweet.getUser().getName()+"\" "+
+                            "\"id\":\""+tweet.getId()+"\", "+
+                            "\"name\":\""+tweet.getUser().getName()+"\", "+
                             "\"tweet\":\""+tweet.getText()+"\""+
                             "}";
 
